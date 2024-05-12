@@ -4,7 +4,7 @@ import me.xiaoying.miscript.function.interpreter.InterpreterManager;
 
 import java.util.*;
 
-public class Blank {
+public class Blank implements Cloneable {
     private final String modifier;
     private final Set<Integer> index = new HashSet<>();
     private final Map<String, Object> variables = new HashMap<>();
@@ -48,11 +48,19 @@ public class Blank {
         return this.variables.get(name);
     }
 
+    public boolean containsVariable(String variable) {
+        return this.variables.containsKey(variable);
+    }
+
     public void run() {
         for (Integer i : this.line.keySet()) {
             String string = this.line.get(i);
-            if (this.interpreterManager.interpreter(string))
-                continue;
+            try {
+                if (this.interpreterManager.interpreter(string, (Blank) this.clone()))
+                    continue;
+            } catch (CloneNotSupportedException e) {
+                throw new RuntimeException(e);
+            }
 
             System.err.println("Error: <line:" + i + "> -> " + string);
             break;

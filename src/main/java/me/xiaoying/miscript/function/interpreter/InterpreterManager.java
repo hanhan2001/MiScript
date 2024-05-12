@@ -1,5 +1,7 @@
 package me.xiaoying.miscript.function.interpreter;
 
+import me.xiaoying.miscript.function.Blank;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +19,7 @@ public class InterpreterManager {
         this.knownInterpreter.put(interpreter.getPriority(), list);
     }
 
-    public boolean interpreter(String string) {
+    public boolean interpreter(String string, Blank blank) {
         // 过滤空行
         if (string == null || string.isEmpty())
             return true;
@@ -28,7 +30,7 @@ public class InterpreterManager {
                 if (!interpreter.match(string))
                     continue;
 
-                status = interpreter.run(string);
+                status = interpreter.run(string, blank);
                 if (status == InterpreterStatus.END)
                     return true;
 
@@ -42,7 +44,7 @@ public class InterpreterManager {
                 if (!interpreter.match(string))
                     continue;
 
-                status = interpreter.run(string);
+                status = interpreter.run(string, blank);
                 if (status == InterpreterStatus.END)
                     return true;
 
@@ -56,7 +58,7 @@ public class InterpreterManager {
                 if (!interpreter.match(string))
                     continue;
 
-                status = interpreter.run(string);
+                status = interpreter.run(string, blank);
                 if (status == InterpreterStatus.END)
                     return true;
 
@@ -70,7 +72,7 @@ public class InterpreterManager {
                 if (!interpreter.match(string))
                     continue;
 
-                status = interpreter.run(string);
+                status = interpreter.run(string, blank);
                 if (status == InterpreterStatus.END)
                     return true;
 
@@ -84,7 +86,7 @@ public class InterpreterManager {
                 if (!interpreter.match(string))
                     continue;
 
-                status = interpreter.run(string);
+                status = interpreter.run(string, blank);
                 if (status == InterpreterStatus.END)
                     return true;
 
