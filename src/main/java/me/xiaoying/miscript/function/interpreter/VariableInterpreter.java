@@ -2,12 +2,15 @@ package me.xiaoying.miscript.function.interpreter;
 
 import me.xiaoying.miscript.function.Blank;
 
-public class CalculatorInterpreter extends Interpreter {
-    public CalculatorInterpreter() {
+/**
+ * 变量定义解释器
+ */
+public class VariableInterpreter extends Interpreter {
+    public VariableInterpreter() {
         this(InterpreterPriority.LOWEST);
     }
 
-    public CalculatorInterpreter(InterpreterPriority priority) {
+    public VariableInterpreter(InterpreterPriority priority) {
         super(priority);
     }
 
@@ -18,6 +21,7 @@ public class CalculatorInterpreter extends Interpreter {
 
     @Override
     public InterpreterStatus run(String string, Blank blank) {
-        return InterpreterStatus.RUNNING;
+        
+        return null;
     }
 }

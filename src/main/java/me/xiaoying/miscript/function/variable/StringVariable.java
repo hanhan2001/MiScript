@@ -1,4 +1,4 @@
-package me.xiaoying.miscript.function.Variable;
+package me.xiaoying.miscript.function.variable;
 
 /**
  * Variable String
@@ -13,5 +13,15 @@ public class StringVariable implements Variable {
     @Override
     public String getValue() {
         return this.value;
+    }
+
+    @Override
+    public boolean match(String string) {
+        if (!string.startsWith("\""))
+            return false;
+        if (!string.endsWith("\""))
+            return false;
+
+        return true;
     }
 }
