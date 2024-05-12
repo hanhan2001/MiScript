@@ -54,7 +54,8 @@ public class Blank {
             if (this.interpreterManager.interpreter(string))
                 continue;
 
-            System.out.println("出错在: " + i + " -> " + string);
+            System.err.println("Error: <line:" + i + "> -> " + string);
+            break;
         }
     }
 }
