@@ -18,6 +18,10 @@ public class InterpreterManager {
     }
 
     public boolean interpreter(String string) {
+        // 过滤空行
+        if (string == null || string.isEmpty())
+            return true;
+
         InterpreterStatus status = null;
         if (this.knownInterpreter.get(InterpreterPriority.LOWEST) != null) {
             for (Interpreter interpreter : this.knownInterpreter.get(InterpreterPriority.LOWEST)) {
