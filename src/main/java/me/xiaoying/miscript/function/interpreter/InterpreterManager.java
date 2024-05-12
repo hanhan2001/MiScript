@@ -21,6 +21,9 @@ public class InterpreterManager {
         InterpreterStatus status = null;
         if (this.knownInterpreter.get(InterpreterPriority.LOWEST) != null) {
             for (Interpreter interpreter : this.knownInterpreter.get(InterpreterPriority.LOWEST)) {
+                if (!interpreter.match(string))
+                    continue;
+
                 status = interpreter.run(string);
                 if (status == InterpreterStatus.END)
                     return true;
@@ -32,6 +35,9 @@ public class InterpreterManager {
 
         if (this.knownInterpreter.get(InterpreterPriority.LOW) != null) {
             for (Interpreter interpreter : this.knownInterpreter.get(InterpreterPriority.LOW)) {
+                if (!interpreter.match(string))
+                    continue;
+
                 status = interpreter.run(string);
                 if (status == InterpreterStatus.END)
                     return true;
@@ -43,6 +49,9 @@ public class InterpreterManager {
 
         if (this.knownInterpreter.get(InterpreterPriority.NORMAL) != null) {
             for (Interpreter interpreter : this.knownInterpreter.get(InterpreterPriority.NORMAL)) {
+                if (!interpreter.match(string))
+                    continue;
+
                 status = interpreter.run(string);
                 if (status == InterpreterStatus.END)
                     return true;
@@ -54,6 +63,9 @@ public class InterpreterManager {
 
         if (this.knownInterpreter.get(InterpreterPriority.HIGH) != null) {
             for (Interpreter interpreter : this.knownInterpreter.get(InterpreterPriority.HIGH)) {
+                if (!interpreter.match(string))
+                    continue;
+
                 status = interpreter.run(string);
                 if (status == InterpreterStatus.END)
                     return true;
@@ -65,6 +77,9 @@ public class InterpreterManager {
 
         if (this.knownInterpreter.get(InterpreterPriority.HIGHEST) != null) {
             for (Interpreter interpreter : this.knownInterpreter.get(InterpreterPriority.HIGHEST)) {
+                if (!interpreter.match(string))
+                    continue;
+
                 status = interpreter.run(string);
                 if (status == InterpreterStatus.END)
                     return true;
