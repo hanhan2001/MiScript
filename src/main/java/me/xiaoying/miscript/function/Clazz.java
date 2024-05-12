@@ -1,20 +1,25 @@
 package me.xiaoying.miscript.function;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FunctionFile {
+/**
+ * 类似 Java Class
+ */
+public class Clazz {
+    private String name;
+    private List<Blank> blanks = new ArrayList<>();
 
-//    private final
-
-    public FunctionFile(String file) {
+    public Clazz(String file) {
         this(new File(file));
     }
 
-    public FunctionFile(InputStream inputStream) {
+    public Clazz(InputStream inputStream, String name, String packagePath) {
 
     }
 
-    public FunctionFile(File file) {
+    public Clazz(File file) {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 
