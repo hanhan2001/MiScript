@@ -2,6 +2,7 @@ package me.xiaoying.miscript.function.loader;
 
 import me.xiaoying.miscript.function.Clazz;
 import me.xiaoying.miscript.function.interpreter.InterpreterManager;
+import me.xiaoying.miscript.function.interpreter.PrintInterpreter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,10 +13,14 @@ import java.util.Map;
 public class MiLoader {
     private final String path;
     private final Map<String, Clazz> knownClazz = new HashMap<>();
-    private final InterpreterManager interpreterManager = new InterpreterManager();
+    private InterpreterManager interpreterManager;
 
+    /**
+     * 默认构造器，当前运行目录作为根路径
+     */
     public MiLoader() {
         this.path = System.getProperty("user.dir");
+        this.init();
     }
 
     /**
@@ -25,6 +30,15 @@ public class MiLoader {
      */
     public MiLoader(String path) {
         this.path = path;
+        this.init();
+    }
+
+    /**
+     * 初始化
+     */
+    private void init() {
+        this.interpreterManager = new InterpreterManager();
+        this.interpreterManager.registerInterpreter(new PrintInterpreter());
     }
 
     public void registerClazz(String name, Clazz clazz) {
@@ -35,7 +49,7 @@ public class MiLoader {
         String origin = name;
         name = this.path + "/" + name;
         name = name.replace("\\.", "/");
-        Clazz clazz = new Clazz(name, this.interpreterManager, this);
+        Clazz clazz = new Clazz(name, this);
         this.registerClazz(origin, clazz);
         return clazz;
     }

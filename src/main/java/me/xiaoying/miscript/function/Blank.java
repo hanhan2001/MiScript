@@ -5,6 +5,7 @@ import me.xiaoying.miscript.function.interpreter.InterpreterManager;
 import java.util.*;
 
 public class Blank implements Cloneable {
+    private Blank parent;
     private final String modifier;
     private final Set<Integer> index = new HashSet<>();
     private final Map<String, Object> variables = new HashMap<>();
@@ -15,6 +16,14 @@ public class Blank implements Cloneable {
     public Blank(String modifier, InterpreterManager interpreterManager) {
         this.modifier = modifier;
         this.interpreterManager = interpreterManager;
+    }
+
+    public void setParent(Blank blank) {
+        this.parent = blank;
+    }
+
+    public Blank getParent() {
+        return this.parent;
     }
 
     public String getModifier() {
