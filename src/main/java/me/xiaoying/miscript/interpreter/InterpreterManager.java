@@ -63,6 +63,6 @@ public class InterpreterManager {
             return interpreter.run(string, blank);
         }
 
-        return InterpreterStatus.RUNNING;
+        return InterpreterStatus.ERROR;
     }
 }
