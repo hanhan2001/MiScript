@@ -1,6 +1,7 @@
 package me.xiaoying.miscript;
 
 import me.xiaoying.miscript.interpreter.InterpreterStatus;
+import me.xiaoying.miscript.method.Method;
 import me.xiaoying.miscript.variable.Variable;
 
 import java.util.HashMap;
