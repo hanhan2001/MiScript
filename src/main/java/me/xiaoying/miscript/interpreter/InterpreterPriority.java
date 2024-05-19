@@ -1,4 +1,4 @@
-package me.xiaoying.miscript.function.interpreter;
+package me.xiaoying.miscript.interpreter;
 
 public enum InterpreterPriority {
     LOWEST,

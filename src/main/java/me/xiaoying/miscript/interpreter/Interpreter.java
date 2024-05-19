@@ -1,7 +1,10 @@
-package me.xiaoying.miscript.function.interpreter;
+package me.xiaoying.miscript.interpreter;
 
-import me.xiaoying.miscript.function.Blank;
+import me.xiaoying.miscript.Blank;
 
+/**
+ * 解释器
+ */
 public abstract class Interpreter {
     private final InterpreterPriority priority;
 
@@ -10,7 +13,7 @@ public abstract class Interpreter {
     }
 
     public InterpreterPriority getPriority() {
-        return priority;
+        return this.priority;
     }
 
     public abstract boolean match(String string);
