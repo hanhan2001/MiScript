@@ -10,7 +10,7 @@ import me.xiaoying.miscript.interpreter.InterpreterStatus;
  */
 public class PrintInterpreter extends Interpreter {
     public PrintInterpreter() {
-        this(InterpreterPriority.LOWEST);
+        this(InterpreterPriority.HIGHEST);
     }
 
     public PrintInterpreter(InterpreterPriority priority) {
