@@ -50,7 +50,12 @@ public class Blank implements Cloneable {
     }
 
     @Override
-    protected java.lang.Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Clazz clone() {
+        try {
+            Clazz clone = (Clazz) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

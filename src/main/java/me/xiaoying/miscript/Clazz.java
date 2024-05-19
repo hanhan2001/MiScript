@@ -70,10 +70,16 @@ public class Clazz extends Object implements Cloneable {
     }
 
     public void run() {
+        this.blank.clone().run();
+    }
+
+    @Override
+    public Clazz clone() {
         try {
-            ((Blank) this.blank.clone()).run();
+            Clazz clone = (Clazz) super.clone();
+            return clone;
         } catch (CloneNotSupportedException e) {
-            throw new RuntimeException(e);
+            throw new AssertionError();
         }
     }
 }
