@@ -41,21 +41,21 @@ public class Clazz extends Object implements Cloneable {
     }
 
     private void initialize(String content) {
-        String[] split = content.split("\n");
-        this.blank = new Blank(this);
-        for (int i = 0; i < split.length; i++)
-            this.blank.insert(i + 1, split[i]);
+        this.blank = new Blank(1, content, this);
     }
 
     private void initialize(InputStream inputStream) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        int index = 1;
+
+        StringBuilder stringBuilder = new StringBuilder();
         String content;
-        this.blank = new Blank(this);
         while ((content = reader.readLine()) != null) {
-            this.blank.insert(index, content);
-            index++;
+            if (!stringBuilder.toString().isEmpty())
+                stringBuilder.append("\n");
+
+            stringBuilder.append(content);
         }
+        this.blank = new Blank(1, stringBuilder.toString(), this);
         reader.close();
         inputStream.close();
     }

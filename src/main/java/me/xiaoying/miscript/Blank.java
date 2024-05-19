@@ -11,16 +11,28 @@ public class Blank implements Cloneable {
     private final Clazz clazz;
     private Blank parent;
     private final Map<Integer, String> knownIndex = new HashMap<>();
+    private final Map<Integer, Blank> knownBlanks = new HashMap<>();
     private final Map<Integer, List<Variable>> variables = new HashMap<>();
 
-    public Blank(Clazz clazz) {
+    public Blank(int index, String content, Clazz clazz) {
         this.clazz = clazz;
 
+        this.init(index, content);
     }
 
-    public Blank(Clazz clazz, Blank parent) {
+    public Blank(int index, String content, Clazz clazz, Blank parent) {
         this.clazz = clazz;
         this.parent = parent;
+
+        this.init(index, content);
+    }
+
+    private void init(int index, String content) {
+        String[] split = content.split("\n");
+        for (String string : split) {
+            this.insert(index, string);
+            index++;
+        }
     }
 
     public void setVariable() {
@@ -41,6 +53,9 @@ public class Blank implements Cloneable {
 
     public void run() {
         for (Integer integer : this.knownIndex.keySet()) {
+            if (this.knownIndex.get(integer) == null || this.knownIndex.get(integer).isEmpty())
+                continue;
+
             InterpreterStatus status =  this.clazz.getLoader().getInterpreterManager().interpreter(this.knownIndex.get(integer), this);
             if (status == InterpreterStatus.ERROR) {
                 System.err.println("Error: <" + this.getClazz().getName() + "-line:" + integer + "> -> " + this.knownIndex.get(integer));
@@ -50,9 +65,9 @@ public class Blank implements Cloneable {
     }
 
     @Override
-    public Clazz clone() {
+    public Blank clone() {
         try {
-            Clazz clone = (Clazz) super.clone();
+            Blank clone = (Blank) super.clone();
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
