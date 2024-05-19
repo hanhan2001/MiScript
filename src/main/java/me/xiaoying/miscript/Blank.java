@@ -12,6 +12,7 @@ public class Blank implements Cloneable {
     private Blank parent;
     private final Map<Integer, String> knownIndex = new HashMap<>();
     private final Map<Integer, Blank> knownBlanks = new HashMap<>();
+    private final Map<String, Method> knownMethods = new HashMap<>();
     private final Map<Integer, List<Variable>> variables = new HashMap<>();
 
     public Blank(int index, String content, Clazz clazz) {
