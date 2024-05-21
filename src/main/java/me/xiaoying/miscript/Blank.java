@@ -60,7 +60,7 @@ public class Blank implements Cloneable {
 
             InterpreterStatus status =  this.clazz.getLoader().getInterpreterManager().interpreter(this.knownIndex.get(integer), this);
             if (status == InterpreterStatus.ERROR) {
-                System.err.println("Error: <" + this.getClazz().getName() + "-line:" + integer + "> -> " + this.knownIndex.get(integer));
+                System.out.println("Error: <" + this.getClazz().getName() + "-line:" + integer + "> -> " + this.knownIndex.get(integer));
                 return;
             }
         }
