@@ -6,7 +6,7 @@ import me.xiaoying.miscript.Object;
 public class Method {
     private final String name;
     private final Blank blank;
-    private MethodType methodType = MethodType.PRIVATE;
+    private MethodType methodType = MethodType.PUBLIC;
     private boolean isStatic = false;
     private Object returnType = null;
 
